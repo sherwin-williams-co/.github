@@ -1,6 +1,6 @@
 {
     "name": "Sherwin Standard Rancher Deploy",
-    "description": "Use this action to deploy into Sherwin Rancher Cluster.",
+    "description": "Use this action to deploy kubernetes yaml files into Sherwin Rancher Cluster.",
     "iconName": "rancher-logo",
     "categories": [
         "kubernetes"
