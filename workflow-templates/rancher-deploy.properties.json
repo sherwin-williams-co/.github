@@ -4,7 +4,6 @@
     "iconName": "rancher-logo",
     "categories": [
         "rancher"
-        "kubernetes"
     ],
     "filePatterns": [
         "package.json$",
