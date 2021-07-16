@@ -1,7 +1,7 @@
 {
     "name": "SW Standard Rancher Deploy",
     "description": "Use this action to deploy into Sherwin Rancher Cluster.",
-    "iconName": "example-icon",
+    "iconName": "rancher-logo",
     "categories": [
         "kubernetes"
     ],
