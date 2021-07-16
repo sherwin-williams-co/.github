@@ -1,0 +1,17 @@
+name: Rancher Deploy
+
+on: push
+name: rancher-deploy
+jobs:
+  deploy:
+    name: rancher deploy to cluster
+    runs-on: sw-ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: deploy to cluster
+      uses: SW-CORP-IT/sw-rancher-deploy-action@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      with:
+        namespace: "dev-gitactions"
+        files: "-f kubernetes/."
