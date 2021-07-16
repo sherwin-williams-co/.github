@@ -3,7 +3,7 @@
     "description": "Use this action to deploy into Sherwin Rancher Cluster.",
     "iconName": "rancher-logo",
     "categories": [
-        "kubernetes"
+        "kubernetes","rancher"
     ],
     "filePatterns": [
         "package.json$",
