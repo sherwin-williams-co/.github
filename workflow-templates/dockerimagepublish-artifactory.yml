@@ -3,7 +3,7 @@ on:
   [workflow_dispatch, push]
 jobs:
   job:
-    runs-on: sw-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     -   
         name: Log in to artifactory Docker Registry
