@@ -11,9 +11,9 @@ jobs:
         name: Log in to artifactory Docker Registry
         uses: docker/login-action@v1
         with:
-          registry: ${{secrets.ARTIFACTORY_DOCKER_REGISTRY}}
-          username: ${{ secrets.ARTIFACTORY_DOCKER_USERNAME}}
-          password: ${{ secrets.ARTIFACTORY_DOCKER_API_KEY }}
+          registry: ${{ secrets.ARTIFACTORY_REGISTRY }}
+          username: ${{ secrets.ARTIFACTORY_USERNAME }}
+          password: ${{ secrets.ARTIFACTORY_API_KEY }}
     -
        name: convert reponame to lowercase
        id: lowercasereponame
@@ -26,5 +26,5 @@ jobs:
         with:
           push: true
           tags: |
-            ${{secrets.DOCKER_REGISTRY}}/${{ steps.lowercasereponame.outputs.git_repo_name }}:${{ github.RUN_NUMBER }}
-            ${{secrets.DOCKER_REGISTRY}}/${{ steps.lowercasereponame.outputs.git_repo_name }}:latest
+            ${{secrets.ARTIFACTORY_REGISTRY}}/${{ steps.lowercasereponame.outputs.git_repo_name }}:${{ github.RUN_NUMBER }}
+            ${{secrets.ARTIFACTORY_REGISTRY}}/${{ steps.lowercasereponame.outputs.git_repo_name }}:latest
