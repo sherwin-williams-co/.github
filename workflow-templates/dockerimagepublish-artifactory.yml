@@ -1,10 +1,11 @@
-## This workflow will build and deploy docker image into sherwin artifactory i.e https://artifactory.sherwin.com.
+## This workflow will build and deploy docker image into sherwin artifactory i.e https://artifactory.sherwin.com. 
+## Before committing the workflow file update the runs-on from ubuntu-latest to sw-ubuntu-latest
 name: dockerimagepublish-artifactory
 on: 
   [workflow_dispatch, push]
 jobs:
   job:
-    runs-on: sw-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     -   
         name: Log in to artifactory Docker Registry
