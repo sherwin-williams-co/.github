@@ -7,7 +7,7 @@ on:
     
 jobs:
   build-jar-deploy:
-    runs-on: sw-ubuntu-latest
+    runs-on: sw-ubuntu-latest #### <- Change to the runner you want to use ####
     
     steps: 
       - uses: actions/checkout@v2
