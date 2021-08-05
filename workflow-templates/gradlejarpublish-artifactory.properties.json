@@ -3,7 +3,6 @@
     "description": "Use this action to deploy Gradle jar files into Sherwin Artifactory.",
     "iconName": "gradle-logo",
     "categories": [
-        "Gradle",
         "Java"
     ],
     "filePatterns": [
