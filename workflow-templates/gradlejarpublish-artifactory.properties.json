@@ -4,7 +4,7 @@
     "iconName": "gradle-logo",
     "categories": [
         "Gradle",
-        "Java'
+        "Java"
     ],
     "filePatterns": [
         "build.gradle",
