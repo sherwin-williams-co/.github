@@ -1,5 +1,5 @@
 {
-    "name": "Sherwin Gradle Jar File Deploy into Artifactory",
+    "name": "Sherwin Deploy Gradle jars into Artifactory",
     "description": "Use this action to deploy Gradle jar files into Sherwin Artifactory.",
     "iconName": "gradle-logo",
     "categories": [
