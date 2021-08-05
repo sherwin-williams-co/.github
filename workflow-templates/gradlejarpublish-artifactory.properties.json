@@ -1,1 +1,12 @@
-
+{
+    "name": "Sherwin Gradle Jar File Deploy into Artifactory",
+    "description": "Use this action to deploy Gradle jar files into Sherwin Artifactory.",
+    "iconName": "gradle-logo",
+    "categories": [
+        "Gradle"
+    ],
+    "filePatterns": [
+        "build.gradle",
+        "gradlew"
+    ]
+}
