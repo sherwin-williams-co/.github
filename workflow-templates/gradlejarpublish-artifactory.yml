@@ -1,0 +1,29 @@
+name: Gradle build jar files and deploy to artifactory
+
+on: 
+  workflow_dispatch:
+  push:
+    branches: [ $default-branch ]
+    
+jobs:
+  build-jar-deploy:
+    runs-on: sw-ubuntu-latest
+    
+    steps: 
+      - uses: actions/checkout@v2
+      
+      - name: Set-up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+    
+      - name: Build gradle jar and deploy to artifactory
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: publish
+        env:
+          ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
