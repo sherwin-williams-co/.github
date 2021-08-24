@@ -1,0 +1,11 @@
+{
+    "name": "Sherwin Windows Docker Image Deploy into artifactory",
+    "description": "Use this action to deploy docker image into sherwin docker artifactory using windows runners",
+    "iconName": "docker-logo",
+    "categories": [
+        "Docker"
+    ],
+    "filePatterns": [
+        "Dockerfile"
+    ]
+}
