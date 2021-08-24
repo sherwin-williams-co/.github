@@ -1,0 +1,19 @@
+# windows docker ex.
+name: Docker Publish (Windows)
+
+on: workflow_dispatch
+
+jobs: 
+  docker-artifactory-publish: 
+    runs-on: sw-windows-latest ### <- Change this to the windows runner if formatting is off ###
+    steps:
+     - uses: actions/checkout@v2
+       
+     - name: Docker Build and Push
+       uses: SW-CORP-IT/sw-windows-docker-build-push@master
+       with: 
+         registry: ${{ secrets.ARTIFACTORY_REGISTRY }}
+         username: ${{ secrets.ARTIFACTORY_USERNAME }}
+         password: ${{ secrets.ARTIFACTORY_API_KEY }}
+         image: sw-corp-it/rxa313-windows-test
+         tags: latest
