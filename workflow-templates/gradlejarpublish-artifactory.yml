@@ -27,3 +27,14 @@ jobs:
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
+          # you must add these secrets to your build.gradle files 
+#       publishing {
+#         repositories {
+#             maven {
+#               name = "artifactory"
+#               url = "https://artifactory.sherwin.com/artifactory/sherwin-release-local"
+#               credentials {
+#                 username = System.getenv("ARTIFACTORY_USERNAME")
+#                 password = System.getenv("ARTIFACTORY_API_KEY")
+#               }
+#             }
