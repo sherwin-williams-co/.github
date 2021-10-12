@@ -3,10 +3,9 @@
     "description": "Use this action to deploy maven packages into sherwin artifactory.",
     "iconName": "maven-logo",
     "categories": [
-        "Java",
-        "Maven"
+        "Java"
     ],
     "filePatterns": [
-        "Maven"
+        "maven"
     ]
 }
