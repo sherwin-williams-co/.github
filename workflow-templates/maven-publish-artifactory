@@ -1,0 +1,9 @@
+name: Publish Maven to Artifactory
+on: workflow_dispatch
+
+jobs:
+  build-maven:
+    runs-on: sw-ubuntu-latest
+    steps:
+    
+    
