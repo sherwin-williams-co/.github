@@ -31,4 +31,11 @@ jobs:
           ARTIFACTORY_USERNAME_REF: "stream-github-actions"
           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_API_KEY }}
           BUILD_ENV: 'github-actions'
-        run: cd maven;mvn -B package --file pom.xml
+        run: cd maven; mvn -B package --file pom.xml
+
+      - name: Release Maven package
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          directory: ./maven/  
+          nexus_username: ${{ secrets.ARTIFACTORY_USERNAME }}
+          nexus_password: ${{ secrets.ARTIFACTORY_API_KEY }}
