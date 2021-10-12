@@ -1,7 +1,7 @@
 {
     "name": "Sherwin Standard Maven Deploy into artifactory",
     "description": "Use this action to deploy maven packages into sherwin artifactory.",
-    "iconName": "docker-logo",
+    "iconName": "maven-logo",
     "categories": [
         "Java",
         "Maven"
