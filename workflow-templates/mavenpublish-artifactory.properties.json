@@ -1,6 +1,6 @@
 {
-    "name": "SW - Maven Deploy into artifactory",
-    "description": "Use this action to deploy maven packages into sherwin artifactory.",
+    "name": "SW - Maven Deploy into Artifactory",
+    "description": "Use this action to deploy maven packages into Sherwin Artifactory.",
     "iconName": "maven-logo",
     "categories": [
         "Java"
