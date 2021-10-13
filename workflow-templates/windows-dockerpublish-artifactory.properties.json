@@ -1,6 +1,6 @@
 {
-    "name": "Sherwin Windows Docker Image Deploy into artifactory",
-    "description": "Use this action to deploy docker image into sherwin docker artifactory using windows runners",
+    "name": "SW - Docker Image Deploy into Artifactory on Windows",
+    "description": "Use this action to deploy docker images into Sherwin artifactory using Windows self-hosted runners",
     "iconName": "docker-logo",
     "categories": [
         "Docker"
