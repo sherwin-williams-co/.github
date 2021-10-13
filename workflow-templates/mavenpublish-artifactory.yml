@@ -1,5 +1,5 @@
 ## This workflow will build and deploy maven into sherwin artifactory i.e https://artifactory.sherwin.com. 
-## Before committing the workflow file update the runs-on to one of our self-hosted runners
+## Before committing the workflow file update the runs-on to our "sw-" self-hosted runners
 name: Deploy Maven Artifact to Artifactory
 
 on: workflow_dispatch
