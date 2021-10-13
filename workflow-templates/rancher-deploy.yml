@@ -19,12 +19,7 @@ jobs:
         find: "@LABELS" 
         replace: ${{ steps.read_label.outputs.contents }}
         include: 'kubernetes/deployment.yml'
-#     - name: Replace Image Tag
-#       uses: jacobtomlinson/gha-find-replace@master
-#       with:
-#         find: "@IMAGE_TAG" 
-#         replace: ${{ github.event.inputs.image_tag }}
-#         include: 'kubernetes/deployment.yml'
+
     - name: deploy to cluster
       uses: SW-CORP-IT/sw-rancher-deploy-action@master
       env:
