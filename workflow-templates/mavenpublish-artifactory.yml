@@ -1,6 +1,6 @@
 ## This workflow will build and deploy maven into sherwin artifactory i.e https://artifactory.sherwin.com. 
 ## Before committing the workflow file update the runs-on to our "sw-" self-hosted runners
-name: Deploy Maven Artifact to Artifactory
+name: Deploy Maven artifact to Artifactory
 
 on: workflow_dispatch
 
@@ -9,36 +9,22 @@ jobs:
     runs-on: sw-ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK
+      - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
-          java-version: 11 
+          java-version: 11
       
-      # This action step sets up Maven on the self-hosted runner
       - name: Setup Maven
         uses: stCarolas/setup-maven@v4.2
         with:
           maven-version: 3.8.2
         
-      # configure the settings.xml on the self-hosted runner to deploy to artifactory
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
           repositories: '[{ "id": "artifactory", "url": "https://artifactory.sherwin.com/artifactory/maven-virtual" }]'  
-          servers: '[{"id": "artifactory","username": "${env.ARTIFACTORY_USERNAME_REF}","password": "${env.ARTIFACTORY_TOKEN_REF}"}]'
+          servers: '[{"id": "artifactory","username": "${{secrets.ARTIFACTORY_USERNAME}}","password": "${{secrets.ARTIFACTORY_API_KEY}}"}]'
           plugin_repositories: '[{ "id": "artifactory", "url": "https://artifactory.sherwin.com/artifactory/maven-virtual" }]'  
       
       - name: Build with Maven
-        env:
-          ARTIFACTORY_USERNAME_REF: "stream-github-actions"
-          ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_API_KEY }}
-          BUILD_ENV: 'github-actions'
-        run: cd maven; mvn -B package --file pom.xml
-      
-      # publish maven package on artifactory 
-      - name: Release Maven package
-        uses: samuelmeuli/action-maven-publish@v1
-        with:
-          directory: ./maven/  
-          nexus_username: ${{ secrets.ARTIFACTORY_USERNAME }}
-          nexus_password: ${{ secrets.ARTIFACTORY_API_KEY }}
+        run: cd maven; mvn -B package deploy --file pom.xml
