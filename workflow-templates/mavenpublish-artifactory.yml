@@ -9,16 +9,18 @@ jobs:
     runs-on: sw-ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 11 
       
+      # This action step sets up Maven on the self-hosted runner
       - name: Setup Maven
         uses: stCarolas/setup-maven@v4.2
         with:
           maven-version: 3.8.2
         
+      # configure the settings.xml on the self-hosted runner to deploy to artifactory
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
@@ -32,7 +34,8 @@ jobs:
           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_API_KEY }}
           BUILD_ENV: 'github-actions'
         run: cd maven; mvn -B package --file pom.xml
-
+      
+      # publish maven package on artifactory 
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:
