@@ -1,6 +1,6 @@
 {
     "name": "SW - Docker Image Deploy into Artifactory",
-    "description": "Use this action to deploy docker images into sherwin docker artifactory.",
+    "description": "Use this action to deploy docker images into Sherwin docker artifactory.",
     "iconName": "docker-logo",
     "categories": [
         "Docker"
