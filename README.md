@@ -1,8 +1,8 @@
 # .github
 This is github actions template repo  
 
-# available self-hosted runner labels 
-sw-ubuntu-latest
+# Available self-hosted runner labels 
+sw-ubuntu-latest  
 sw-windows-latest
 
 # gradle notes
