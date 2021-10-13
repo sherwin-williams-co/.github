@@ -1,11 +1,12 @@
-# windows docker ex.
+## This workflow will build and deploy docker image into sherwin artifactory i.e https://artifactory.sherwin.com for Windows runners. 
+## Before committing the workflow file update the runs-on to our "sw-" self-hosted runners
 name: Docker Publish (Windows)
 
 on: workflow_dispatch
 
 jobs: 
   docker-artifactory-publish: 
-    runs-on: sw-windows-latest ### <- Change this to the windows runner if formatting is off ###
+    runs-on: sw-windows-latest 
     steps:
      - uses: actions/checkout@v2
        
