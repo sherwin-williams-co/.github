@@ -1,5 +1,10 @@
 # .github
 This is github actions template repo  
+
+# available self-hosted runner labels 
+sw-ubuntu-latest
+sw-windows-latest
+
 # gradle notes
 You must add a step in your build.gradle to publish the artifacts.  
 ```
