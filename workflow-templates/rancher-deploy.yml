@@ -3,7 +3,7 @@ on: workflow_dispatch
 jobs:
   deploy:
     name: rancher deploy to cluster
-    runs-on: ubuntu-latest
+    runs-on: sw-ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Read labels file contents
