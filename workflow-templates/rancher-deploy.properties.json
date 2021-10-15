@@ -3,7 +3,7 @@
     "description": "Use this action to deploy kubernetes yaml files into Sherwin Rancher Cluster.",
     "iconName": "rancher-logo",
     "categories": [
-        "Kubernetes"
+        "Deployment"
     ],
     "filePatterns": [
         "Dockerfile",
