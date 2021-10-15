@@ -8,16 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Remove Docker Context for buildx
+        continue-on-error: true
+        id: remove-buildx-context
+        run: |
+          docker context rm -f builder
      
       - name: setup docker context for buildx
+        continue-on-error: true
         id: buildx-context
         run: |
           docker context create builders
           
-      - name: setup docker buildx
+      - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
         with:
           endpoint: builders
+          driver-opts: image=docker.artifactory.sherwin.com/moby/sw_buildkit:1
 
       - name: Log in to artifactory Docker Registry
         uses: docker/login-action@v1
