@@ -20,3 +20,20 @@ You must add a step in your build.gradle to publish the artifacts.
                }
              }
 ```
+# maven notes  
+If going to dev-sherwin-release-apps, you must add this parent block in pom.xml
+```
+<parent>
+		<groupId>com.sherwin.parent.devsherwinreleaseapps</groupId>
+		<artifactId>pom</artifactId>
+		<version>1.0</version>
+	</parent> 
+```
+If going to sherwin-release-local, you must add this parent block in pom.xml
+```
+<parent>
+		<groupId>com.sherwin.parent.sherwinreleaselocal</groupId>
+		<artifactId>pom</artifactId>
+		<version>1.0</version>
+	</parent> 
+```
