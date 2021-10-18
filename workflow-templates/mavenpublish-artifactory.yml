@@ -22,9 +22,10 @@ jobs:
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          repositories: '[{ "id": "artifactory", "url": "https://artifactory.sherwin.com/artifactory/maven-virtual" }]'  
+          repositories: '[{ "id": "artifactory", "url": "https://artifactory.sherwin.com/artifactory/maven-virtual" }]'
           servers: '[{"id": "artifactory","username": "${{secrets.ARTIFACTORY_USERNAME}}","password": "${{secrets.ARTIFACTORY_API_KEY}}"}]'
-          plugin_repositories: '[{ "id": "artifactory", "url": "https://artifactory.sherwin.com/artifactory/maven-virtual" }]'  
+          plugin_repositories: '[{ "id": "artifactory", "url": "https://artifactory.sherwin.com/artifactory/maven-virtual" }]'
+          mirrors: '[{ "id": "artifactory", "url": "https://artifactory.sherwin.com/artifactory/maven-virtual" }]'
       
       - name: Build with Maven
         run: cd maven; mvn -B package deploy --file pom.xml
