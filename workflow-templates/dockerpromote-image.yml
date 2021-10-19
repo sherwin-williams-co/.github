@@ -1,1 +1,36 @@
+name: Promote Docker Image
+on: 
+  workflow_dispatch: 
+    inputs:
+      ENV:
+        required: true
+        description: 'Environment'
+        default: 'dev'
+      IMAGE_NAME:
+        required: true
+        description: 'Image name'
+      TAG: 
+       required: true
+       description: 'Image tag'
+       
+jobs: 
+  promote-image:
+    runs-on: sw-ubuntu-latest
+    steps:
+      - uses: jfrog/setup-jfrog-cli@v1
+        env:
+          JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_TOKEN }}
+          
+      - name: Get previous env 
+        uses: sherwin-williams-co/sw-environment-properties-action@master
+        id: prv-env
+        with:
+          environment: ${{ github.event.inputs.ENV }}
+          
+      - name: Promote Docker Image using JFrog CLI
+        if: ${{ github.event.inputs.ENV != 'dev' }}
+        run: |
+          jfrog rt docker-promote ${{ github.event.inputs.IMAGE_NAME }}/${{ github.event.inputs.TAG }} docker-${{ steps.prv-env.outputs.environmentDeployEnviroment }} docker-${{ github.event.inputs.ENV }} 
+
+
 
