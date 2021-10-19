@@ -6,6 +6,6 @@
         "Deployment"
     ],
     "filePatterns": [
-        "Dockerfile"
+        ""
     ]
 }
