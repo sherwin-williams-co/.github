@@ -1,1 +1,11 @@
-
+{
+    "name": "SW - Promote Docker Image",
+    "description": "Use this action to promote docker images between artifactory repositories.",
+    "iconName": "docker-logo",
+    "categories": [
+        "Deployment"
+    ],
+    "filePatterns": [
+        "Dockerfile"
+    ]
+}
