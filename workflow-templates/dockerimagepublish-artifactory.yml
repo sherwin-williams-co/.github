@@ -43,6 +43,7 @@ jobs:
       - name: Build and publish container image
         uses: docker/build-push-action@v2
         with:
+          context: .
           push: true
           tags: |
             ${{secrets.ARTIFACTORY_REGISTRY}}/${{ steps.lowercasereponame.outputs.git_repo_name }}:${{ github.RUN_NUMBER }}
