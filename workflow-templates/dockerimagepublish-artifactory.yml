@@ -9,14 +9,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Remove docker context for buildx
-        continue-on-error: true
-        id: remove-buildx-context
+      - name: Setup docker context for buildx
+        id: buildx-context
         run: |
-          docker context rm -f builder
+          if  docker context inspect builders ;
+          then
+            echo "Docker Builders context exist!!"
+          else
+            docker context create builders
+          fi
+        shell: bash
      
       - name: Setup docker context for buildx
-        continue-on-error: true
         id: buildx-context
         run: |
           docker context create builders
