@@ -9,15 +9,15 @@ jobs:
     - uses: actions/checkout@v2
       
     - uses: sherwin-williams-co/sw-build-deploy-docker-image-action@main
-       with:
-         artifactory_registry: ${{ secrets.ARTIFACTORY_REGISTRY }}
-         artifactory_username: ${{ secrets.ARTIFACTORY_USERNAME }}
-         artifactory_api_key: ${{ secrets.ARTIFACTORY_API_KEY }}
-         # Optional
-        # github_token: ${{ github.TOKEN }}
-        # dockerfile_path: docker/Dockerfile
-        # image_name: image_name/image
-        # buildcontext: .
-        # docker_build_args: |
-          # args1=1
-          # args2=2
+      with:
+        artifactory_registry: ${{ secrets.ARTIFACTORY_REGISTRY }}
+        artifactory_username: ${{ secrets.ARTIFACTORY_USERNAME }}
+        artifactory_api_key: ${{ secrets.ARTIFACTORY_API_KEY }}
+        # Optional
+       # github_token: ${{ github.TOKEN }}
+       # dockerfile_path: docker/Dockerfile
+       # image_name: image_name/image
+       # buildcontext: .
+       # docker_build_args: |
+         # args1=1
+         # args2=2
