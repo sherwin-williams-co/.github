@@ -1,9 +1,11 @@
 name: Rancher Deploy
 on: workflow_dispatch
+
 jobs:
   deploy:
     name: rancher deploy to cluster
     runs-on: sw-ubuntu-latest
+    
     steps:
     - uses: actions/checkout@master
     - uses: sherwin-williams-co/sw-rancher-deploy-composite-action@main
