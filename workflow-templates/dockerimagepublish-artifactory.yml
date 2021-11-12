@@ -1,5 +1,4 @@
 ## This workflow will build and deploy docker image into sherwin artifactory i.e https://artifactory.sherwin.com. 
-## Before committing the workflow file update the runs-on to our "sw-" self-hosted runners
 name: dockerimagepublish-artifactory
 on: 
   [workflow_dispatch, push]
@@ -7,48 +6,18 @@ jobs:
   job:
     runs-on: sw-ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
       
-      - name: Setup docker context for buildx
-        id: buildx-context
-        run: |
-          if  docker context inspect builders ;
-          then
-            echo "Docker Builders context exist!!"
-          else
-            docker context create builders
-          fi
-        shell: bash
-     
-      - name: Setup docker context for buildx
-        id: buildx-context
-        run: |
-          docker context create builders
-          
-      - name: Setup docker buildx
-        uses: docker/setup-buildx-action@v1
-        with:
-          endpoint: builders
-          driver-opts: image=docker.artifactory.sherwin.com/moby/sw_buildkit:5
-
-      - name: Log in to artifactory docker registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.ARTIFACTORY_REGISTRY }}
-          username: ${{ secrets.ARTIFACTORY_USERNAME }}
-          password: ${{ secrets.ARTIFACTORY_API_KEY }}
-    
-      - name: convert reponame to lowercase
-        id: lowercasereponame
-        run: |
-          repoName=`echo "${{github.repository}}" | tr '[:upper:]' '[:lower:]'`
-          echo "::set-output name=git_repo_name::${repoName}"
-    
-      - name: Build and publish container image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: |
-            ${{secrets.ARTIFACTORY_REGISTRY}}/${{ steps.lowercasereponame.outputs.git_repo_name }}:${{ github.RUN_NUMBER }}
-            ${{secrets.ARTIFACTORY_REGISTRY}}/${{ steps.lowercasereponame.outputs.git_repo_name }}:latest
+    - uses: sherwin-williams-co/sw-build-deploy-docker-image-action@main
+       with:
+         artifactory_registry: ${{ secrets.ARTIFACTORY_REGISTRY }}
+         artifactory_username: ${{ secrets.ARTIFACTORY_USERNAME }}
+         artifactory_api_key: ${{ secrets.ARTIFACTORY_API_KEY }}
+         # Optional
+        # github_token: ${{ github.TOKEN }}
+        # dockerfile_path: docker/Dockerfile
+        # image_name: image_name/image
+        # buildcontext: .
+        # docker_build_args: |
+          # args1=1
+          # args2=2
