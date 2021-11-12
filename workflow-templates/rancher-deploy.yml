@@ -6,24 +6,15 @@ jobs:
     runs-on: sw-ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Read labels file contents
-      id: read_label
-      uses: andstor/file-reader-action@v1
+    - uses: sherwin-williams-co/sw-rancher-deploy-composite-action@main
       with:
-        path: "kubernetes/labels"
-    - name: File contents
-      run: echo "${{ steps.read_label.outputs.contents }}"
-    - name: Replace labels
-      uses: jacobtomlinson/gha-find-replace@master
-      with:
-        find: "@LABELS" 
-        replace: ${{ steps.read_label.outputs.contents }}
-        include: 'kubernetes/deployment.yml'
-
-    - name: deploy to cluster
-      uses: SW-CORP-IT/sw-rancher-deploy-action@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_NP_RANCHER }}
-      with:
-        namespace: "${GITHUB_REF##*/}-gitactions"
-        files: "-f kubernetes/."
+        environment: dev
+        np_kube_config_data: ${{ secrets.KUBE_CONFIG_NP_RANCHER }}
+        prod_kube_config_data: ${{ secrets.KUBE_CONFIG_PROD_RANCHER }}
+        jf_arttifactory_token: ${{ secrets.JF_ARTIFACTORY_TOKEN }}
+        # Optional
+        # labels_path: 'kubernetes/labels'
+        # deployment_yaml_path: 'kubernetes/deployment.yml'
+        # namespace: 'gitactions'
+        # files: 'kubernetes/.'
+  
