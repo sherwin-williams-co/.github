@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - uses: sherwin-williams-co/sw-build-deploy-docker-image-action@main
+    - uses: sherwin-williams-co/sw-build-deploy-docker-image-composite-action@main
       with:
         artifactory_registry: ${{ secrets.ARTIFACTORY_REGISTRY }}
         artifactory_username: ${{ secrets.ARTIFACTORY_USERNAME }}
