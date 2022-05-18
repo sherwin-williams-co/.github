@@ -23,9 +23,9 @@ jobs:
         run: chmod +x gradlew
     
       - name: Build gradle jar and deploy to artifactory
-        uses: eskatos/gradle-command-action@v1
+        uses: gradle/gradle-build-action@v2.1.4
         with:
-          arguments: publish
+          arguments: -Dorg.gradle.internal.publish.checksums.insecure=true publish
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
