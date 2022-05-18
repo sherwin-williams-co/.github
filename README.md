@@ -20,6 +20,17 @@ You must add a step in your build.gradle to publish the artifacts.
                }
              }
 ```
+
+Additionally, if you get this warning:
+
+    Cannot upload checksum for module-maven-metadata.xml because the remote repository doesn't support SHA-512. This will not fail the build.
+
+You can suppress it by specifying the following system property when running your gradle command:
+
+    -Dorg.gradle.internal.publish.checksums.insecure=true
+
+
+
 # maven notes  
 If going to dev-sherwin-release-apps, you must add this parent block in pom.xml
 ```
