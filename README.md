@@ -34,7 +34,7 @@ You can suppress it by specifying the following system property when running you
 # maven notes  
 If going to dev-sherwin-release-apps, you must add this parent block in pom.xml
 ```
-<parent>
+	<parent>
 		<groupId>com.sherwin.parent.devsherwinreleaseapps</groupId>
 		<artifactId>pom</artifactId>
 		<version>1.0</version>
@@ -42,7 +42,7 @@ If going to dev-sherwin-release-apps, you must add this parent block in pom.xml
 ```
 If going to sherwin-release-local, you must add this parent block in pom.xml
 ```
-<parent>
+	<parent>
 		<groupId>com.sherwin.parent.sherwinreleaselocal</groupId>
 		<artifactId>pom</artifactId>
 		<version>1.0</version>
